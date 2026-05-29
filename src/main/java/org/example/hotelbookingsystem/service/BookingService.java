@@ -52,4 +52,8 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
+    public int countByRoomType(String roomType) {
+        return bookingRepository.countByRoomType(roomType);
+    }
+
 }
