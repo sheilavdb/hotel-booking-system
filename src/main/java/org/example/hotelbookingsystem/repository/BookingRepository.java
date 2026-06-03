@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public class BookingRepository {
     private List<Booking> bookingArrayList = new ArrayList<>();
-    private int idCreate = 1;
+    private Long idCreate = 1L;
 
     public List<Booking> findAll() {
             return bookingArrayList;
@@ -22,11 +22,11 @@ public class BookingRepository {
         return booking;
     }
 
-    public void deleteById (int id) {
+    public void deleteById (Long id) {
         Booking bookingToDelete = null;
-
+// chose a for loop istället för lambda function
         for (Booking booking : bookingArrayList) {
-            if (booking.getId() == id) {
+            if (booking.getId().equals(id)) {
                 bookingToDelete = booking;
             }
         }

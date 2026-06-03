@@ -3,10 +3,12 @@ package org.example.hotelbookingsystem.service;
 import org.example.hotelbookingsystem.exception.GuestCapacityException;
 import org.example.hotelbookingsystem.exception.RoomFullyBookedException;
 import org.example.hotelbookingsystem.model.Booking;
+import org.example.hotelbookingsystem.model.Room;
 import org.example.hotelbookingsystem.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,12 +50,22 @@ public class BookingService {
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
-    public void deleteBooking(int id) {
+    public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
     }
 
+    //Seperate RoomService if the system would be bigger
+
     public int countByRoomType(String roomType) {
         return bookingRepository.countByRoomType(roomType);
+    }
+
+    public List<Room> getAvailableRooms() {
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room("Enkelrum", 10 - countByRoomType("Enkelrum")));
+        rooms.add(new Room("Dubbelrum", 7 - countByRoomType("Dubbelrum")));
+        rooms.add(new Room("Svit", 3 - countByRoomType("Svit")));
+        return rooms;
     }
 
 }

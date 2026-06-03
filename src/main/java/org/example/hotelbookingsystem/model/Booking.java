@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 public class Booking {
-    private int id;
+    private Long id;
     @NotBlank(message = "Namn får inte vara tom")
     private String guestName;
     @Pattern(regexp = "Enkelrum|Dubbelrum|Svit", message = "Välj mellan: Enkelrum, Dubbelrum, Svit")
@@ -21,7 +21,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int id, String guestName, String roomType, int numberOfGuests, double totalPrice) {
+    public Booking(Long id, String guestName, String roomType, int numberOfGuests, double totalPrice) {
         this.id = id;
         this.guestName = guestName;
         this.roomType = roomType;
@@ -29,11 +29,11 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
