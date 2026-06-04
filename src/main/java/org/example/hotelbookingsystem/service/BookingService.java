@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+//Logiken av controller
 @Service
 public class BookingService {
     @Autowired

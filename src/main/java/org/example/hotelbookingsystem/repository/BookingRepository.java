@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+//Lagring av data
 @Repository
 public class BookingRepository {
     private List<Booking> bookingArrayList = new ArrayList<>();
