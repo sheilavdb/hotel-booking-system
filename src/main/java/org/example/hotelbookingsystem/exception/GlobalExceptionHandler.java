@@ -23,12 +23,24 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler (GuestCapacityException.class)
     @ResponseBody
-    public ResponseEntity<ErrorMessage> handleGuestCapacity(GuestCapacityException gu) {
+    public ResponseEntity<ErrorMessage> handleGuestCapacity(GuestCapacityException ex) {
         ErrorMessage error = new ErrorMessage(
                 LocalDateTime.now().toString(),
                 400,
-                gu.getMessage()
+                ex.getMessage()
         );
         return ResponseEntity.status(400).body(error);
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity<ErrorMessage> handleInternalError(Exception ex) {
+        ErrorMessage error = new ErrorMessage(
+                LocalDateTime.now().toString(),
+                500,
+                "Internt fel"
+        );
+        System.out.println(ex.getMessage());
+        return ResponseEntity.status(500).body(error);
     }
 }
