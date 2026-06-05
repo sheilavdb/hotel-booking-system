@@ -10,18 +10,19 @@ public class Booking {
     @NotBlank(message = "Namn får inte vara tom")
     private String guestName;
     @Pattern(regexp = "Enkelrum|Dubbelrum|Svit", message = "Välj mellan: Enkelrum, Dubbelrum, Svit")
+    @NotBlank(message = "rumstyp får inte vara tom")
     private String roomType;
 
     @Min(value = 1, message = "Antal gäster ska vara minst 1")
     @Max(value = 3, message = "Antal gäster ska inte överstiga 3")
     private int numberOfGuests;
 // Behövs ingen validering, automatisk beräkning
-    private double totalPrice;
+    private Double totalPrice;
 
     public Booking() {
     }
 
-    public Booking(Long id, String guestName, String roomType, int numberOfGuests, double totalPrice) {
+    public Booking(Long id, String guestName, String roomType, int numberOfGuests, Double totalPrice) {
         this.id = id;
         this.guestName = guestName;
         this.roomType = roomType;
@@ -61,11 +62,11 @@ public class Booking {
         this.numberOfGuests = numberOfGuests;
     }
 
-    public double getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

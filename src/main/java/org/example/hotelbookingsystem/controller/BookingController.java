@@ -5,6 +5,7 @@ import org.example.hotelbookingsystem.model.Booking;
 import org.example.hotelbookingsystem.model.Room;
 import org.example.hotelbookingsystem.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,9 @@ public class BookingController {
     }
 
     @DeleteMapping("/bookings/{id}")
-    public void deleteBooking(@PathVariable Long id) {
+    public ResponseEntity<String> deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
+        return ResponseEntity.ok("bokning " + id + " har raderats");
     }
 
     @GetMapping("/rooms")

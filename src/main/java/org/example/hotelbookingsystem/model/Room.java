@@ -13,11 +13,11 @@ public class Room {
         this.availableRooms = availableRooms;
     }
 
-    public String getType() {
+    public String getRoomType() {
         return roomType;
     }
 
-    public int getCountByRoomType() {
+    public int getAvailableRooms() {
         return availableRooms;
     }
 }

@@ -39,11 +39,11 @@ public class BookingService {
         }
 
         if(booking.getRoomType().equals("Enkelrum")) {
-            booking.setTotalPrice(500);
+            booking.setTotalPrice(500.0);
         } else if (booking.getRoomType().equals("Dubbelrum")) {
-            booking.setTotalPrice(1000);
+            booking.setTotalPrice(1000.0);
         } else {
-            booking.setTotalPrice(2000);
+            booking.setTotalPrice(2000.0);
         }
         return bookingRepository.save(booking);
     }
