@@ -5,7 +5,6 @@ import org.example.hotelbookingsystem.exception.RoomFullyBookedException;
 import org.example.hotelbookingsystem.model.Booking;
 import org.example.hotelbookingsystem.model.Room;
 import org.example.hotelbookingsystem.repository.BookingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,8 +13,11 @@ import java.util.List;
 //Logiken av controller
 @Service
 public class BookingService {
-    @Autowired
-    private BookingRepository bookingRepository;
+    private final BookingRepository bookingRepository;
+
+    public BookingService (BookingRepository bookingRepository) {
+        this.bookingRepository = bookingRepository;
+    }
 
     public Booking createBooking(Booking booking) {
         if(booking.getRoomType().equals("Enkelrum") && bookingRepository.countByRoomType(booking.getRoomType()) >= 10) {

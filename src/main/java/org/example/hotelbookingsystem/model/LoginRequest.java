@@ -1,5 +1,6 @@
 package org.example.hotelbookingsystem.model;
 
+//Not a model but a Data Transfer Object, handles data exchange between client and API.
 public class LoginRequest {
     private String username;
     private String password;
